@@ -26,7 +26,7 @@ Chuck Norris never uses plugins.
 Chuck Norris controls your widgets.
 Chuck Norris writes fully valid code the first time.
 Chuck Norris can divide by zero.
-Chuck Norris can past from Word just fine.
+Chuck Norris can paste from Word just fine.
 Chuck Norris once wrote a function. It created the Internet.";
 
 	// Here we split it into lines

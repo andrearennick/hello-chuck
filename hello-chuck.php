@@ -26,14 +26,14 @@ Chuck Norris never uses plugins.
 Chuck Norris controls your widgets.
 Chuck Norris writes fully valid code the first time.
 Chuck Norris can divide by zero.
-Chuck Norris can past from Word just fine.
+Chuck Norris can paste from Word just fine.
 Chuck Norris once wrote a function. It created the Internet.";
 
 	// Here we split it into lines
-	$lyrics = explode("\n", $lyrics);
+	$lyrics = explode( "\n", $lyrics );
 
 	// And then randomly choose a line
-	return wptexturize( $lyrics[ mt_rand(0, count($lyrics) - 1) ] );
+	return wptexturize( $lyrics[ mt_rand( 0, count( $lyrics ) - 1 ) ] );
 }
 
 // This just echoes the chosen line, we'll position it later
@@ -42,28 +42,27 @@ function hello_chuck() {
 	echo "<p id='chuck'>$chosen</p>";
 }
 
-// Now we set that function up to execute when the admin_footer action is called
-add_action('admin_footer', 'hello_chuck');
+// Now we set that function up to execute when the admin_notices action is called
+add_action( 'admin_notices', 'hello_chuck' );
 
 // We need some CSS to position the paragraph
 function chuck_css() {
-	// This makes sure that the posinioning is also good for right-to-left languages
-	$x = ( 'rtl' == get_bloginfo( 'text_direction' ) ) ? 'left' : 'right';
+	// This makes sure that the positioning is also good for right-to-left languages
+	$x = is_rtl() ? 'left' : 'right';
 
 	echo "
 	<style type='text/css'>
 	#chuck {
-		position: absolute;
-		top: 4.5em;
+		float: $x;
+		padding-$x: 15px;
+		padding-top: 5px;		
 		margin: 0;
-		padding: 0;
-		$x: 215px;
 		font-size: 11px;
 	}
 	</style>
 	";
 }
 
-add_action('admin_head', 'chuck_css');
+add_action( 'admin_head', 'chuck_css' );
 
 ?>
